@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guzip-Lab | Официальный сайт проекта GuzipSite</title>
-    <!-- Подключение шрифтов и иконок -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
+    <title>Guzip-Lab</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --panel-bg: #161b22;
-            --accent-color: #58a6ff;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --border-color: #30363d;
+            --bg: #ffffff;
+            --text: #111111;
+            --muted: #666666;
+            --border: #e5e5e5;
+            --link: #0066cc;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0a;
+                --text: #ededed;
+                --muted: #a0a0a0;
+                --border: #262626;
+                --link: #4da6ff;
+            }
         }
 
         * {
@@ -25,239 +30,121 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--panel-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        .github-link {
-            background-color: #21262d;
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .github-link:hover {
-            background-color: #30363d;
-            border-color: #8b949e;
-        }
-
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .cta-btn {
-            background-color: #238636;
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.2s;
-            display: inline-block;
-        }
-
-        .cta-btn:hover {
-            background-color: #2ea44f;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: #fff;
-            margin-bottom: 3rem;
-        }
-
-        .projects {
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
             padding: 4rem 2rem;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .card {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: transform 0.2s, border-color 0.2s;
+        header {
+            margin-bottom: 3rem;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-        }
-
-        .card i {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            color: #fff;
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-link {
-            color: var(--accent-color);
-            text-decoration: none;
+        h1 {
+            font-size: 1.8rem;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
         }
 
-        .card-link:hover {
+        .subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .repo-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .repo-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .repo-item a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .repo-item a:hover {
             text-decoration: underline;
         }
 
-        footer {
-            background-color: var(--panel-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 5rem;
-            font-size: 0.9rem;
+        .repo-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
+        footer {
+            margin-top: 5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo"><i class="fa-solid fa-flask"></i> Guzip<span>-Lab</span></a>
-            <a href="https://github.com/Guzip-Lab" target="_blank" class="github-link">
-                <i class="fa-brands fa-github"></i> GitHub
-            </a>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Guzip-Lab</h1>
+            <p class="subtitle">Разработка операционных систем и веб-ресурсов.</p>
+        </header>
 
-    <main>
-        <section class="hero">
-            <h1>Добро пожаловать в Guzip-Lab</h1>
-            <p>Мы разрабатываем современные open-source решения, утилиты и веб-приложения. Проект GuzipSite является отправной точкой для знакомства со всеми нашими релизами.</p>
-            <a href="https://github.com" target="_blank" class="cta-btn">
-                <i class="fa-solid fa-code-branch"></i> Исходный код GuzipSite
-            </a>
-        </section>
-
-        <section class="projects">
-            <h2 class="section-title">Наши проекты</h2>
-            <div class="projects-grid">
+        <main>
+            <h2 class="section-title">Репозитории</h2>
+            <ul class="repo-list">
                 
-                <!-- Карточка проекта 1 (Пример) -->
-                <div class="card">
-                    <i class="fa-solid fa-globe"></i>
-                    <h3>GuzipSite</h3>
-                    <p>Официальный веб-сайт организации, объединяющий информацию обо всех разработках, документацию и ссылки на экосистему.</p>
-                    <a href="https://github.com" target="_blank" class="card-link">
-                        Подробнее <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+                <li class="repo-item">
+                    <h3><a href="https://github.com" target="_blank">MizOS</a></h3>
+                    <p>Операционная система на базе ядра Linux и Debian rootfs. В планах переход на собственную rootfs.</p>
+                </li>
 
-                <!-- Карточка проекта 2 (Заглушка для будущих репозиториев) -->
-                <div class="card">
-                    <i class="fa-solid fa-cubes"></i>
-                    <h3>Новые разработки</h3>
-                    <p>Здесь будут отображаться новые модули, библиотеки и утилиты автоматизации, разрабатываемые лабораторией.</p>
-                    <a href="https://github.com/Guzip-Lab" target="_blank" class="card-link">
-                        Все репозитории <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+                <li class="repo-item">
+                    <h3><a href="https://github.com" target="_blank">GuzipSite</a></h3>
+                    <p>Исходный код и файлы официального минималистичного веб-сайта организации.</p>
+                </li>
 
-                <!-- Карточка проекта 3 -->
-                <div class="card">
-                    <i class="fa-solid fa-users-gear"></i>
-                    <h3>Сообщество</h3>
-                    <p>Присоединяйтесь к разработке! Мы всегда рады новым идеям, баг-репортам и pull-request'ам от open-source энтузиастов.</p>
-                    <a href="https://github.com/Guzip-Lab" target="_blank" class="card-link">
-                        Внести вклад <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+            </ul>
+        </main>
 
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Guzip-Lab. Разработано с помощью GitHub Pages.</p>
-    </footer>
+        <footer>
+            <span>&copy; 2026 Guzip-Lab</span>
+            <a href="https://github.com/Guzip-Lab" target="_blank">GitHub Профиль</a>
+        </footer>
+    </div>
 
 </body>
 </html>
